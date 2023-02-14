@@ -33,24 +33,57 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
 
 def get_inbox(recipient: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+   
+    Summary: 
+    	gets mail inbox from the server by making a GET request to the /mail/inbox/recipient endpoint
+    
+    Args: 
+    	recipient (string) : the recipient of the mail 
+    
+    Returns: 
+    	no variable returns, but function will print json data in an understandable way
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Summary: 
+    	gets all mail entries for a sender from the server by making a GET request to the /mail/sent/sender endpoint
+    
+    Args: 
+    	sender (string) : the sender of the mail 
+    
+    Returns: 
+    	no variable returns, but function will print json data in an understandable way
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Summary: 
+    	gets a mail entry from the server by making a GET request to the /mail/mail_id endpoint
+    
+    Args: 
+    	mail_id (string) : unique id of a mail entry 
+    
+    Returns: 
+    	no variable returns, but function will print json data in an understandable way
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Summary: 
+    	deletes a mail entry from the server by making a DELETE request to the /mail/mail_id endpoint
+    
+    Args: 
+    	mail_id (string) : the unique id of a mail entry
+    
+    Returns: 
+    	no variable returns, but function will print json data in an understandable way
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
@@ -119,4 +152,3 @@ def main():
 # you'll need to demo sending, receiving, and deleting mail for checkoff.
 if __name__ == '__main__':
     main()
-
